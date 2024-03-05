@@ -1,13 +1,12 @@
 openapi: 3.0.0
 info:
   title: Todo List
-  description:
-    Todo List API written with Express, MySQL database
+  description: Todo List API written with Express, MySQL database
   version: 1.0.0
   server:
     -url: http://localhost:3000/
     description: local server
-    
+
 tags:
   - name: Tasks
     description: General APIs
@@ -17,7 +16,7 @@ tags:
 paths:
   /:
     get:
-      tags: 
+      tags:
         - Tasks
       summary: Lists all the tasks, or an empty array if no tasks were found
       responses:
@@ -28,11 +27,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Task'
+                  $ref: "#/components/schemas/Task"
         500:
-          description: Server error   
+          description: Server error
     post:
-      tags: 
+      tags:
         - Tasks
       summary: Create a new task
       requestBody:
@@ -40,21 +39,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Task'
+              $ref: "#/components/schemas/Task"
       responses:
         200:
           description: The created task.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
         500:
           description: Server error
   /{id}:
     get:
-      tags: 
+      tags:
         - Task
-      summary: Get the task by id
+      summary: Get a task by id
       parameters:
         - in: path
           name: id
@@ -64,19 +63,19 @@ paths:
           description: The task id
       responses:
         200:
-          description: The task response by id
+          description: A task response by id
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
         404:
           description: Task not found
         500:
-         description: Server error
+          description: Server error
     patch:
-      tags: 
+      tags:
         - Task
-      summary: Update the task by id
+      summary: Update a task by id
       parameters:
         - in: path
           name: id
@@ -89,7 +88,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Task'
+              $ref: "#/components/schemas/Task"
       responses:
         200:
           description: Task updated successfully
@@ -98,9 +97,9 @@ paths:
         500:
           description: Server error
     delete:
-      tags: 
+      tags:
         - Task
-      summary: Remove the task by id
+      summary: Remove a task by id
       parameters:
         - in: path
           name: id
@@ -146,6 +145,6 @@ components:
       example:
         id: 23
         title: Workout at the gym
-        description: Jumping jacks, burpees, pushups, jump squats, high knees 
+        description: Jumping jacks, burpees, pushups, jump squats, high knees
         dueDate: 2024-02-28T03:00:00.000Z
         isFinished: false
